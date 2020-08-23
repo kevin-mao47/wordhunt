@@ -171,9 +171,6 @@ int main() {
         }
     }
 
-    // sort(solution.begin(), solution.end());
-    // solution.erase(unique(solution.begin(), solution.end()), solution.end());
-
     compare c;
     sort(solution.begin(), solution.end(), c);
 
