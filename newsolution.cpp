@@ -142,8 +142,6 @@ int main() {
     compare c;
     sort(solution.begin(), solution.end(), c);
 
-    cout << "printing \n";
-
     for(int i = 0; i < solution.size(); i++) {
         cout << solution[i] << '\n';
     }

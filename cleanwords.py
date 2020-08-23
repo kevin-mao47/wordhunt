@@ -1,7 +1,7 @@
 words = []
 new_list = []
 
-with open("words.txt") as f:
+with open("words.txt", 'r') as f:
     words = f.read().split()
 
 for word in words:
