@@ -69,7 +69,29 @@ TrieNode* dictTrie() {
     return root;
 }
 
-void findWord(int row, int col, string word, bool checked[4][4], struct TrieNode *node, int origrow, int origcol) {
+string addDirections(string directions, int i, int j) {
+    if (i == -1) {
+        directions = directions + "U";
+    }
+    else if (i == 0) {
+        directions = directions;
+    }
+    else {
+        directions = directions + "D";
+    }
+    if (j == -1) {
+        directions = directions + "L, ";
+    }
+    else if (j == 0) {
+        directions = directions + ", ";
+    }
+    else {
+        directions = directions + "R, ";
+    }
+    return directions;
+}
+
+void findWord(int row, int col, string word, bool checked[4][4], struct TrieNode *node, string directions) {
     // out of bounds
     if (row < 0 || row > 3 || col < 0 || col > 3) {
         return;
@@ -91,7 +113,7 @@ void findWord(int row, int col, string word, bool checked[4][4], struct TrieNode
 
     // see if current word forms a full word
     if (word.length() > 3 && node->children[index]->wordEnd) {
-        solution.push_back(word + " (" + to_string(origrow + 1) + "," + to_string(origcol + 1) + ")");
+        solution.push_back(word + directions.substr(0, directions.size()-2));
     }
 
     for (int i = -1; i < 2; i++) {
@@ -108,7 +130,8 @@ void findWord(int row, int col, string word, bool checked[4][4], struct TrieNode
             if (j == 1 && col == 3) {
                 continue;
             }
-            findWord(row + i, col + j, word, checked, node->children[index], origrow, origcol);
+            string newDirections = addDirections(directions, i, j);
+            findWord(row + i, col + j, word, checked, node->children[index], newDirections);
         }
     }
     checked[row][col] = false;
@@ -135,7 +158,7 @@ int main() {
 
     for (int i = 0; i < 4; i++) {
         for (int j = 0; j < 4; j++) {
-            findWord(i, j, "", checked, root, i, j);
+            findWord(i, j, "", checked, root, " (" + to_string(i + 1) + "," + to_string(j+ 1) + ") ");
         }
     }
 
