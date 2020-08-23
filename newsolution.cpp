@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -87,6 +88,16 @@ string addDirections(string directions, int i, int j) {
     return directions;
 }
 
+bool substringSearch(vector<string> solution, string target) {
+    for (int i = 0; i < solution.size(); i++) {
+        string firstWord = solution[i].substr(0, solution[i].find(' '));
+        if (firstWord == target) {
+            return true;
+        }
+    }
+    return false;
+}
+
 void findWord(int row, int col, string word, bool checked[4][4], struct TrieNode *node, string directions) {
     // out of bounds
     if (row < 0 || row > 3 || col < 0 || col > 3) {
@@ -108,8 +119,10 @@ void findWord(int row, int col, string word, bool checked[4][4], struct TrieNode
     checked[row][col] = true;
 
     // see if current word forms a full word
-    if (word.length() > 3 && node->children[index]->wordEnd) {
-        solution.push_back(word + directions.substr(0, directions.size()-2));
+    if (word.length() >= 3 && node->children[index]->wordEnd) {
+        if (!substringSearch(solution, word)) {
+            solution.push_back(word + directions.substr(0, directions.size()-2));
+        }
     }
 
     for (int i = -1; i < 2; i++) {
