@@ -2,11 +2,7 @@
 #include <string>
 #include <fstream>
 #include <vector>
-#include <utility>
-#include <algorithm>
-#include <map>
-#include <time.h> 
-#include <chrono>
+
 using namespace std;
 
 string board[4];
@@ -141,6 +137,7 @@ int main() {
     cout << "Enter the words of the board, left to right, top to bottom: ";
     string input;
     cin >> input;
+    transform(input.begin(), input.end(), input.begin(), ::tolower);
   
     board[0] = input.substr(0, 4);
     board[1] = input.substr(4, 8);
@@ -161,6 +158,9 @@ int main() {
             findWord(i, j, "", checked, root, " (" + to_string(i + 1) + "," + to_string(j+ 1) + ") ");
         }
     }
+
+    // sort(solution.begin(), solution.end());
+    // solution.erase(unique(solution.begin(), solution.end()), solution.end());
 
     compare c;
     sort(solution.begin(), solution.end(), c);
