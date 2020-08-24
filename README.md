@@ -1,7 +1,7 @@
 # Word Hunt Solver
 Word Hunt Solver is a program to output all solution words to the iMessage game Word Hunt.
 
-## Intoduction
+## Introduction
 
 Word Hunt is a popular iMessage game where two players compete to find the greatest number of words in a 4x4 board of letters within 80 seconds. Players can form words by connecting letters which are directly adjacent. An example board where a player is submitting a word can be seen in the screenshot below:
 <img src="images/IMG_4944.PNG" width=300>
