@@ -24,6 +24,6 @@ Run the following in the directory:
 The program will ask you to enter the board as one line of letters, starting from left to right and top to bottom. After submitting, the program will output a list of all solution words to the board, in increase point-value order. Below shows an excerpt of an output from the program:
 ![alt text](images/output.png)
 
-The coordinates indicate the row number (top to bottom) and column number (left to right) of the appropriate starting point for the associated word. The list afterwards indicates the directions necessary to create the word. (U = up, D = down, L = left, R = right, UL = up-left diagonal, UR = up-right diagonal, DL = down-left diagonal, DR = down-right diagonal). Duplicates (multiple paths to create the same word) are not shown.
+The coordinates indicate the row number (top to bottom) and column number (left to right) of the appropriate starting point for the associated word. The list afterwards indicates the directions necessary to create the word. (U = up, D = down, L = left, R = right, UL = up-left diagonal, UR = up-right diagonal, DL = down-left diagonal, DR = down-right diagonal). Duplicate words (multiple paths to create the same word) are not shown.
 
 NOTE: words.txt contains the word bank of all words determined to be valid. However, this may not be the exact word bank used by iMessage/Game Pigeon. To change the word bank, replace words.txt with the appropriate list of words. cleanwords.py can be used to clean the word bank to contain only words with alphabetic characters.
